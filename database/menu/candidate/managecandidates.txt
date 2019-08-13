@@ -1,10 +1,11 @@
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
-#=#=#=#=#=# [ Candidates Menu ] #=#=#=#=#=#=#
+#           [ Candidates Menu ]             #
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
-#        [1] Add Candidate                  #
-#        [2] Update Candidate Details       #
-#        [3] Delete Candidate               #
-#        [4] Show Candidates List           #
-#                                           #
-#        [9] Back to Main Menu              #
+-        [1] Add Candidate                  -
+-        [2] Update Candidate Details       -
+-        [3] Delete Candidate               -
+-        [4] Show Candidates List           -
+-                                           -
+-        [9] Back to Main Menu              -
+-                                           -
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#

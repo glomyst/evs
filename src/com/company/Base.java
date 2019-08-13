@@ -6,6 +6,7 @@ public class Base {
     public static String[][] fileContent;
     public static int recordCount = 0;
     public static void showMenu(String menu) throws FileNotFoundException {
+        clearScreen();
         String curFile = "";
         switch (menu){
             case "main":
@@ -37,7 +38,6 @@ public class Base {
         File file = new File("database/"+readfile);
         Scanner scanfile = new Scanner(file);
 
-        //List<String> fileContent = new ArrayList<>();
         countRecords(readfile);
         fileContent = new String[recordCount][recordCount*2];
 
@@ -56,10 +56,9 @@ public class Base {
 
     public static void showList(String[][] fileContent){
         for(int i = 0; i <= fileContent.length-1; i++){
-            System.out.format("%32s%10s%16s", fileContent[i][0], fileContent[i][1], fileContent[i][0]);
-            //System.out.println(fileContent[i][0]);
-            //System.out.println(fileContent[i][1]);
-            System.out.println("-------------------------");
+            System.out.format("| %-3s| %-20s| %-20s|", i+1, fileContent[i][0], fileContent[i][1]);
+            System.out.println();
+            System.out.println("--------------------------------------------------");
         }
     }
 
@@ -73,6 +72,10 @@ public class Base {
         }
 
 
+    }
+
+    public static void clearScreen() {
+        for (int i = 0; i < 50; ++i) System.out.println();
     }
 }
 

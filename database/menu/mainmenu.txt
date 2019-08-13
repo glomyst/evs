@@ -1,11 +1,12 @@
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
-#--------------< Main Menu >----------------#
+#              [ Main Menu ]                #
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
-#        [1] Manage Candidates              #
-#        [2] Manage Voters                  #
-#        [3] Open Voting                    #
-#        [4] View Results                   #
-#        [5] View Statistics                #
-#                                           #
-#        [9] Exit Program                   #
+-        [1] Manage Candidates              -
+-        [2] Manage Voters                  -
+-        [3] Open Voting                    -
+-        [4] View Results                   -
+-        [5] View Statistics                -
+-                                           -
+-        [9] Exit Program                   -
+-                                           -
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#

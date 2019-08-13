@@ -28,7 +28,7 @@ public class Main extends Base{
         showMenu("manage_candidates");
         System.out.println("Please select an option from above");
         int submenuopt = userIn.nextInt();
-
+        clearScreen();
         switch (submenuopt){
             case 1:
                 System.out.println("Please enter the candidate name: ");
@@ -40,13 +40,33 @@ public class Main extends Base{
                 String box = userIn.next();
                 Candidate:addCandidate(name,idcardno,box);
                 break;
+            case 2:
+                Candidate.viewCandiatesList(0);
+                System.out.println("Enter the box number you want to edit");
+                int selectedbox = userIn.nextInt();
+                clearScreen();
+
+                Candidate.viewCandiatesList(selectedbox);
+                System.out.println("Please select the record id you want to update");
+                int selectedrecord =  userIn.nextInt();
+
+                System.out.println("Current name: "+fileContent[selectedrecord-1][0]);
+                System.out.print("New name: ");
+
+                fileContent[selectedrecord-1][0] = userIn.next();
+                System.out.println("Current ID card number: "+fileContent[selectedrecord-1][1]);
+                System.out.print("New ID card number: ");
+
+                fileContent[selectedrecord-1][1] = userIn.next();
+
+                System.out.println();
+                showList(fileContent);
+                userIn.next();
+                break;
             case 4:
-                getFileContents("candidates/box/1.txt");
-                showList(fileContent);
-                getFileContents("candidates/box/2.txt");
-                showList(fileContent);
-                getFileContents("candidates/box/3.txt");
-                showList(fileContent);
+                Candidate.viewCandiatesList(0);
+                System.out.println("Input any value and press enter to continue");
+                userIn.next();
                 break;
             case 9:
                 mainMenu();
