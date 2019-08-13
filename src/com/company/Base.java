@@ -3,6 +3,8 @@ package com.company;
 import java.io.*;
 import java.util.*;
 public class Base {
+    public static String[][] fileContent;
+    public static int recordCount = 0;
     public static void showMenu(String menu) throws FileNotFoundException {
         String curFile = "";
         switch (menu){
@@ -31,14 +33,46 @@ public class Base {
     }
 
     public static void getFileContents(String readfile) throws FileNotFoundException {
-        File file = new File(readfile);
+        recordCount = 0;
+        File file = new File("database/"+readfile);
         Scanner scanfile = new Scanner(file);
 
-        List<String> fileContent = new ArrayList<>();
+        //List<String> fileContent = new ArrayList<>();
+        countRecords(readfile);
+        fileContent = new String[recordCount][recordCount*2];
 
-        while(scanfile.hasNext()){
-            
+        int count = 0;
+        while(scanfile.hasNextLine()){
+            String[] fileStuff = scanfile.nextLine().split(",");
+            String name = fileStuff[0];
+            String idcardno = fileStuff[1];
+
+            fileContent[count][0] = name;
+            fileContent[count][1] = idcardno;
+            count++;
         }
+
+    }
+
+    public static void showList(String[][] fileContent){
+        for(int i = 0; i <= fileContent.length-1; i++){
+            System.out.format("%32s%10s%16s", fileContent[i][0], fileContent[i][1], fileContent[i][0]);
+            //System.out.println(fileContent[i][0]);
+            //System.out.println(fileContent[i][1]);
+            System.out.println("-------------------------");
+        }
+    }
+
+    public static void countRecords(String readfile) throws FileNotFoundException {
+        File file = new File("database/"+readfile);
+        Scanner scanfile = new Scanner(file);
+
+        while(scanfile.hasNextLine()){
+            recordCount++;
+            String line = scanfile.nextLine();
+        }
+
+
     }
 }
 

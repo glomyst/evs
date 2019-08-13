@@ -40,6 +40,14 @@ public class Main extends Base{
                 String box = userIn.next();
                 Candidate:addCandidate(name,idcardno,box);
                 break;
+            case 4:
+                getFileContents("candidates/box/1.txt");
+                showList(fileContent);
+                getFileContents("candidates/box/2.txt");
+                showList(fileContent);
+                getFileContents("candidates/box/3.txt");
+                showList(fileContent);
+                break;
             case 9:
                 mainMenu();
                 break;
