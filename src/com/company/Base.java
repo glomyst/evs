@@ -90,8 +90,6 @@ public class Base {
             recordCount++;
             String line = scanfile.nextLine();
         }
-
-
     }
 
     public static void updateContent(String[][] fileContent, String selectedbox, String type) throws FileNotFoundException {
@@ -109,7 +107,7 @@ public class Base {
         clearFileContent(file);
         for(int i = 0; i <= fileContent.length-1; i++){
             if(fileContent[i][0] != "" && fileContent[i][1] != ""){
-                fileWriter(file, fileContent[i][0]+","+fileContent[i][1]+","+fileContent[i][2]);
+                fileWriter(file, fileContent[i][0]+","+fileContent[i][1]+","+fileContent[i][2]+","+fileContent[i][3]);
             }
         }
     }

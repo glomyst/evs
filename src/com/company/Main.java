@@ -25,6 +25,9 @@ public class Main extends Base{
             case 2:
                 manageVoters();
                 break;
+            case 3:
+                voting();
+                break;
         }
     }
 
@@ -41,9 +44,11 @@ public class Main extends Base{
                 String name = userIn.nextLine();
                 System.out.println("Please enter the ID card number of the candidate: ");
                 String idcardno = userIn.nextLine();
+                System.out.println("Please enter the candidate number");
+                String candno = userIn.next();
                 System.out.println("Please enter the box number of candidate");
                 String box = userIn.next();
-                Candidate:addCandidate(name,idcardno,box);
+                Candidate:addCandidate(name,idcardno,candno,box);
                 break;
             case 2:
                 Candidate.viewCandiatesList(0);
@@ -57,13 +62,16 @@ public class Main extends Base{
 
                 System.out.println("Current name: "+fileContent[selectedrecord-1][0]);
                 System.out.print("New name: ");
-
                 userIn.nextLine();
                 fileContent[selectedrecord-1][0] = userIn.nextLine();
+
                 System.out.println("Current ID card number: "+fileContent[selectedrecord-1][1]);
                 System.out.print("New ID card number: ");
-
                 fileContent[selectedrecord-1][1] = userIn.nextLine();
+
+                System.out.println("Current candidate number: "+fileContent[selectedrecord-1][3]);
+                System.out.print("New candidate number: ");
+                fileContent[selectedrecord-1][3] = userIn.nextLine();
 
                 System.out.println();
                 showList(fileContent,"CANDIDATES");
@@ -87,7 +95,7 @@ public class Main extends Base{
                 fileContent[selectedrecord-1][1] = "";
                 fileContent[selectedrecord-1][2] = "";
                 fileContent[selectedrecord-1][3] = "";
-                
+
                 updateContent(fileContent, Integer.toString(selectedbox),"CANDIDATES");
                 System.out.println("Candidate deleted!");
                 System.out.println("Input any value and press enter to continue");
@@ -177,5 +185,19 @@ public class Main extends Base{
         }
 
         manageVoters();
+    }
+
+    public static void voting() throws FileNotFoundException {
+        System.out.println("Please enter the box number to open for voting");
+        String box = userIn.next();
+        Voting.getVotersList(box);
+        //System.out.println("Input any value and press enter to continue");
+        //userIn.next();
+        System.out.println("Please select a voter: ");
+        String voter = userIn.next();
+
+        Candidate.viewCandiatesList(Integer.parseInt(box));
+        System.out.println("Select the candidate you want to vote for");
+        String votingcand = userIn.next();
     }
 }

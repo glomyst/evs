@@ -7,9 +7,9 @@ public class Candidate extends Base {
 
     }
 
-    public static void addCandidate(String name, String idcardno, String box){
+    public static void addCandidate(String name, String idcardno, String candno,String box){
         String path = "candidates/box/"+box+".txt";
-        String content = name+","+idcardno+",0";
+        String content = name+","+idcardno+",0,"+candno;
 
         fileWriter(path, content);
         System.out.println("New candidate Added!");
@@ -24,13 +24,13 @@ public class Candidate extends Base {
         }
 
         while(boxcnt <= 3){
-            System.out.println("==================================================");
-            System.out.println("                     BOX "+boxcnt+"                        ");
-            System.out.println("==================================================");
+            System.out.println("===========================================================");
+            System.out.println("                          BOX "+boxcnt+"                            ");
+            System.out.println("===========================================================");
 
-            System.out.format("| %-3s| %-20s| %-20s|", "#", "Name", "ID #");
+            System.out.format("| %-3s| %-20s| %-20s| %-7s|", "#", "Name", "ID #", "Cand #");
             System.out.println();
-            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - ");
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             getFileContents("candidates/box/"+boxcnt+".txt");
             showList(fileContent, "CANDIDATES");
 

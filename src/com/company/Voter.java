@@ -9,7 +9,7 @@ public class Voter extends Base{
 
     public static void addVoter(String name, String idcardno, String box){
         String path = "voters/voters.txt";
-        String content = name+","+idcardno+","+box;
+        String content = name+","+idcardno+","+box+",no";
 
         fileWriter(path, content);
         System.out.println("New voter Added!");
