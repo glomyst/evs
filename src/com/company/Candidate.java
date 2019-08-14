@@ -28,11 +28,11 @@ public class Candidate extends Base {
             System.out.println("                     BOX "+boxcnt+"                        ");
             System.out.println("==================================================");
 
-            System.out.format("| %-3s| %-20s| %-20s|", "#", "Name", "ID Card Number");
+            System.out.format("| %-3s| %-20s| %-20s|", "#", "Name", "ID #");
             System.out.println();
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - ");
             getFileContents("candidates/box/"+boxcnt+".txt");
-            showList(fileContent);
+            showList(fileContent, "CANDIDATES");
 
             if(boxid >= 1 && boxid <= 3){
                 break;

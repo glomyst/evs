@@ -1,11 +1,11 @@
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
-#           [ Candidates Menu ]             #
+#             [ Voters Menu ]               #
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
 #                                           #
-#        [1] Add Candidate                  #
-#        [2] Update Candidate Details       #
-#        [3] Delete Candidate               #
-#        [4] Show Candidates List           #
+#        [1] Add Voter                      #
+#        [2] Update Voter Details           #
+#        [3] Delete Voter                   #
+#        [4] Show Voters List               #
 #                                           #
 #        [9] Back to Main Menu              #
 #                                           #

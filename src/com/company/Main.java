@@ -22,6 +22,9 @@ public class Main extends Base{
             case 1:
                 manageCandidates();
                 break;
+            case 2:
+                manageVoters();
+                break;
         }
     }
 
@@ -63,9 +66,9 @@ public class Main extends Base{
                 fileContent[selectedrecord-1][1] = userIn.nextLine();
 
                 System.out.println();
-                showList(fileContent);
+                showList(fileContent,"CANDIDATES");
 
-                updateContent(fileContent, Integer.toString(selectedbox));
+                updateContent(fileContent, Integer.toString(selectedbox),"CANDIDATES");
                 System.out.println("Candidate details updated!");
                 System.out.println("Input any value and press enter to continue");
                 userIn.next();
@@ -82,7 +85,13 @@ public class Main extends Base{
 
                 fileContent[selectedrecord-1][0] = "";
                 fileContent[selectedrecord-1][1] = "";
-                updateContent(fileContent, Integer.toString(selectedbox));
+                fileContent[selectedrecord-1][2] = "";
+                fileContent[selectedrecord-1][3] = "";
+                
+                updateContent(fileContent, Integer.toString(selectedbox),"CANDIDATES");
+                System.out.println("Candidate deleted!");
+                System.out.println("Input any value and press enter to continue");
+                userIn.next();
                 break;
             case 4:
                 Candidate.viewCandiatesList(0);
@@ -95,5 +104,78 @@ public class Main extends Base{
         }
 
         manageCandidates();
+    }
+
+    public static void manageVoters() throws FileNotFoundException {
+        showMenu("manage_voters");
+        System.out.println("Please select an option from above");
+        int submenuopt = userIn.nextInt();
+        clearScreen();
+        switch (submenuopt) {
+            case 1:
+                System.out.println("Please enter the voter name: ");
+                userIn.nextLine();
+                String name = userIn.nextLine();
+                System.out.println("Please enter the ID card number of the voter: ");
+                String idcardno = userIn.nextLine();
+                System.out.println("Please enter the box number of voter");
+                String box = userIn.next();
+                Voter.addVoter(name,idcardno,box);
+                break;
+            case 2:
+                int selectedrecord;
+                Voter.viewVotersList();
+
+                System.out.println("Please select the record id you want to update");
+                selectedrecord =  userIn.nextInt();
+
+                System.out.println("Current name: "+fileContent[selectedrecord-1][0]);
+                System.out.print("New name: ");
+                userIn.nextLine();
+                fileContent[selectedrecord-1][0] = userIn.nextLine();
+
+                System.out.println("Current ID card number: "+fileContent[selectedrecord-1][1]);
+                System.out.print("New ID card number: ");
+                fileContent[selectedrecord-1][1] = userIn.nextLine();
+
+                System.out.println("Current Box number: "+fileContent[selectedrecord-1][1]);
+                System.out.print("New box number: ");
+                fileContent[selectedrecord-1][2] = userIn.nextLine();
+
+                System.out.println();
+                showList(fileContent,"VOTERS");
+
+                updateContent(fileContent, "", "VOTERS");
+                System.out.println("Voter details updated!");
+                System.out.println("Input any value and press enter to continue");
+                userIn.next();
+                break;
+            case 3:
+                Voter.viewVotersList();
+
+                System.out.println("Please select the record id you want to delete");
+                selectedrecord =  userIn.nextInt();
+
+                fileContent[selectedrecord-1][0] = "";
+                fileContent[selectedrecord-1][1] = "";
+                fileContent[selectedrecord-1][2] = "";
+                fileContent[selectedrecord-1][3] = "";
+
+                updateContent(fileContent, "","VOTERS");
+                System.out.println("Voter deleted!");
+                System.out.println("Input any value and press enter to continue");
+                userIn.next();
+                break;
+            case 4:
+                Voter.viewVotersList();
+                System.out.println("Input any value and press enter to continue");
+                userIn.next();
+                break;
+            case 9:
+                mainMenu();
+                break;
+        }
+
+        manageVoters();
     }
 }

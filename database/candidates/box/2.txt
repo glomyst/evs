@@ -1,2 +1,2 @@
-Mohamed Ali,A343343,0
-Ali Ibrahim,A23233232,0
+Mohamed Ali,A343343,0,1
+Ali Ibrahim,A23233232,0,3
