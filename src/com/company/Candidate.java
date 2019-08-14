@@ -9,7 +9,7 @@ public class Candidate extends Base {
 
     public static void addCandidate(String name, String idcardno, String box){
         String path = "candidates/box/"+box+".txt";
-        String content = name+","+idcardno;
+        String content = name+","+idcardno+",0";
 
         fileWriter(path, content);
         System.out.println("New candidate Added!");
@@ -30,7 +30,7 @@ public class Candidate extends Base {
 
             System.out.format("| %-3s| %-20s| %-20s|", "#", "Name", "ID Card Number");
             System.out.println();
-            System.out.println("==================================================");
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - ");
             getFileContents("candidates/box/"+boxcnt+".txt");
             showList(fileContent);
 

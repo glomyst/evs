@@ -39,16 +39,18 @@ public class Base {
         Scanner scanfile = new Scanner(file);
 
         countRecords(readfile);
-        fileContent = new String[recordCount][recordCount*2];
+        fileContent = new String[recordCount][recordCount*3];
 
         int count = 0;
         while(scanfile.hasNextLine()){
             String[] fileStuff = scanfile.nextLine().split(",");
             String name = fileStuff[0];
             String idcardno = fileStuff[1];
+            String numvotes = fileStuff[2];
 
             fileContent[count][0] = name;
             fileContent[count][1] = idcardno;
+            fileContent[count][2] = numvotes;
             count++;
         }
 
@@ -74,8 +76,24 @@ public class Base {
 
     }
 
+    public static void updateContent(String[][] fileContent, String selectedbox) throws FileNotFoundException {
+        String file = "candidates/box/"+selectedbox+".txt";
+        clearFileContent(file);
+        for(int i = 0; i <= fileContent.length-1; i++){
+            if(fileContent[i][0] != "" && fileContent[i][1] != ""){
+                fileWriter(file, fileContent[i][0]+","+fileContent[i][1]+","+fileContent[i][2]);
+            }
+        }
+    }
+
     public static void clearScreen() {
         for (int i = 0; i < 50; ++i) System.out.println();
+    }
+
+    public static void  clearFileContent(String file) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter("database/"+file);
+        writer.print("");
+        writer.close();
     }
 }
 

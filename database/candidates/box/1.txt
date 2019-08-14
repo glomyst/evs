@@ -1,7 +1,5 @@
-xdsadas,dadasda
-asdsda,ggggggg
-asdasd,adsas
-Afsah Nasir,A288515
-asdas,asdas
-1,1
-Afsah,132323232
+asdsda,ggggggg,0
+Afsah Nasir,A288515,0
+asdas,asdas,0
+This is a newone,23232323,0
+Afsah,132323232,0
