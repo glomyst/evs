@@ -3,6 +3,7 @@ package com.company;
 import java.io.FileNotFoundException;
 
 public class Voting extends Base{
+
     public static void voting(){
 
     }
@@ -17,7 +18,7 @@ public class Voting extends Base{
             }
         }
 
-        String[][] eligible_voters = new String[voterscount][voterscount*4];
+        eligible_voters = new String[voterscount][voterscount*4];
         System.out.println(voterscount);
 
         System.out.println("===========================================================");
@@ -36,5 +37,23 @@ public class Voting extends Base{
         }
 
         showList(eligible_voters, "VOTERS");
+    }
+
+    public static void addvote(String voter, String candidate, String box) throws FileNotFoundException {
+        getFileContents("voters/voters.txt");
+
+        for(int i = 0; i <= fileContent.length-1; i++){
+            if(fileContent[i][1].equals(voter)){
+                fileContent[i][3] = "yes";
+            }
+        }
+
+        updateContent(fileContent, "", "VOTERS");
+
+        getFileContents("candidates/box/"+box+".txt");
+        int currentVotes = Integer.parseInt(fileContent[Integer.parseInt(candidate)-1][2]);
+        fileContent[Integer.parseInt(candidate)-1][2] = Integer.toString(++currentVotes);
+
+        updateContent(fileContent, box, "CANDIDATES");
     }
 }

@@ -5,6 +5,7 @@ import java.util.*;
 public class Base {
     public static String[][] fileContent;
     public static int recordCount = 0;
+    public static String[][] eligible_voters;
     public static void showMenu(String menu) throws FileNotFoundException {
         clearScreen();
         String curFile = "";

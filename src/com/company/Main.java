@@ -26,7 +26,7 @@ public class Main extends Base{
                 manageVoters();
                 break;
             case 3:
-                voting();
+                voting("");
                 break;
         }
     }
@@ -187,17 +187,24 @@ public class Main extends Base{
         manageVoters();
     }
 
-    public static void voting() throws FileNotFoundException {
-        System.out.println("Please enter the box number to open for voting");
-        String box = userIn.next();
+    public static void voting(String box) throws FileNotFoundException {
+        if(box.equals("")){
+            System.out.println("Please enter the box number to open for voting");
+            box = userIn.next();
+        }
+
         Voting.getVotersList(box);
         //System.out.println("Input any value and press enter to continue");
         //userIn.next();
         System.out.println("Please select a voter: ");
-        String voter = userIn.next();
+        String voter = eligible_voters[userIn.nextInt()-1][1];
 
         Candidate.viewCandiatesList(Integer.parseInt(box));
         System.out.println("Select the candidate you want to vote for");
         String votingcand = userIn.next();
+
+        Voting.addvote(voter, votingcand, box);
+
+        voting(box);
     }
 }
