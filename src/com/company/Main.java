@@ -28,6 +28,9 @@ public class Main extends Base{
             case 3:
                 voting("");
                 break;
+            case 4:
+                Candidate.showResults();
+                break;
         }
     }
 
@@ -78,8 +81,8 @@ public class Main extends Base{
 
                 updateContent(fileContent, Integer.toString(selectedbox),"CANDIDATES");
                 System.out.println("Candidate details updated!");
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+
+                waitUser();
                 break;
             case 3:
                 Candidate.viewCandiatesList(0);
@@ -98,13 +101,11 @@ public class Main extends Base{
 
                 updateContent(fileContent, Integer.toString(selectedbox),"CANDIDATES");
                 System.out.println("Candidate deleted!");
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+                waitUser();
                 break;
             case 4:
                 Candidate.viewCandiatesList(0);
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+                waitUser();
                 break;
             case 9:
                 mainMenu();
@@ -155,8 +156,7 @@ public class Main extends Base{
 
                 updateContent(fileContent, "", "VOTERS");
                 System.out.println("Voter details updated!");
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+                waitUser();
                 break;
             case 3:
                 Voter.viewVotersList();
@@ -171,13 +171,11 @@ public class Main extends Base{
 
                 updateContent(fileContent, "","VOTERS");
                 System.out.println("Voter deleted!");
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+                waitUser();
                 break;
             case 4:
                 Voter.viewVotersList();
-                System.out.println("Input any value and press enter to continue");
-                userIn.next();
+                waitUser();
                 break;
             case 9:
                 mainMenu();
@@ -188,16 +186,30 @@ public class Main extends Base{
     }
 
     public static void voting(String box) throws FileNotFoundException {
+        clearScreen();
         if(box.equals("")){
             System.out.println("Please enter the box number to open for voting");
             box = userIn.next();
+            Voting.openVoting(box);
         }
+        clearScreen();
 
         Voting.getVotersList(box);
-        //System.out.println("Input any value and press enter to continue");
-        //userIn.next();
-        System.out.println("Please select a voter: ");
-        String voter = eligible_voters[userIn.nextInt()-1][1];
+        System.out.println("Please select a voter");
+        System.out.println("(Type 'back' to go back to Main menu)");
+        System.out.println("(Input 'close' to close voting)");
+        userIn.nextLine();
+        String voter = userIn.nextLine();
+
+        if(voter.equals("back")){
+            mainMenu();
+        }else if(voter.equals("close")){
+            Voting.closeVoting(box);
+        }else{
+            voter = eligible_voters[Integer.parseInt(voter)-1][1];
+        }
+
+        clearScreen();
 
         Candidate.viewCandiatesList(Integer.parseInt(box));
         System.out.println("Select the candidate you want to vote for");

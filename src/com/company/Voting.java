@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Voting extends Base{
 
@@ -37,6 +39,43 @@ public class Voting extends Base{
         }
 
         showList(eligible_voters, "VOTERS");
+    }
+
+    public static void openVoting(String box) throws FileNotFoundException {
+        getFileContents("voting/box"+box+".txt");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        if(!(fileContent[0][1].equals("0"))){
+            System.out.println("Box "+box+" is closed");
+            waitUser();
+            Main.mainMenu();
+        }
+
+        if(fileContent[0][0].equals("0")){
+            fileContent[0][0] = dtf.format(now);
+            updateContent(fileContent, box, "VOTING");
+        }else{
+            System.out.println("Box "+box+" is already open for voting");
+            waitUser();
+        }
+
+    }
+
+    public static void closeVoting(String box) throws FileNotFoundException {
+        getFileContents("voting/box"+box+".txt");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        fileContent[0][1] = dtf.format(now);
+
+        updateContent(fileContent, box, "VOTING");
+
+        System.out.println("Voting closed for box "+box);
+        waitUser();
+        Main.mainMenu();
     }
 
     public static void addvote(String voter, String candidate, String box) throws FileNotFoundException {

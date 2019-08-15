@@ -72,6 +72,13 @@ public class Base {
                     System.out.println("-----------------------------------------------------------");
                 }
                 break;
+            case "RESULTS":
+                for(int i = 0; i <= fileContent.length-1; i++){
+                    System.out.format("| %-3s| %-20s| %-10s| %-7s| %-8s|", i+1, fileContent[i][0], fileContent[i][1],fileContent[i][3],fileContent[i][2]);
+                    System.out.println();
+                    System.out.println("-----------------------------------------------------------");
+                }
+                break;
 
             case "VOTERS":
                 for(int i = 0; i <= fileContent.length-1; i++){
@@ -102,6 +109,9 @@ public class Base {
             case "VOTERS":
                 file = "voters/voters.txt";
                 break;
+            case "VOTING":
+                file = "voting/box"+selectedbox+".txt";
+                break;
         }
 
 
@@ -121,6 +131,11 @@ public class Base {
         PrintWriter writer = new PrintWriter("database/"+file);
         writer.print("");
         writer.close();
+    }
+
+    public static void waitUser(){
+        System.out.println("Input any value and press enter to continue");
+        Main.userIn.next();
     }
 }
 

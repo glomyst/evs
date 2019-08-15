@@ -40,4 +40,28 @@ public class Candidate extends Base {
             boxcnt++;
         }
     }
+
+    public static void showResults() throws FileNotFoundException {
+        clearScreen();
+        System.out.println("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#");
+        System.out.println("#                         RESULTS                         #");
+        System.out.println("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#");
+        int boxcnt = 1;
+        while(boxcnt <= 3){
+            System.out.println("===========================================================");
+            System.out.println("                          BOX "+boxcnt+"                            ");
+            System.out.println("===========================================================");
+
+            System.out.format("| %-3s| %-20s| %-10s| %-7s| %-8s|", "#", "Name", "ID #", "Cand #", "Votes");
+            System.out.println();
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            getFileContents("candidates/box/"+boxcnt+".txt");
+            showList(fileContent, "RESULTS");
+
+            boxcnt++;
+        }
+
+        waitUser();
+        Main.mainMenu();
+    }
 }
