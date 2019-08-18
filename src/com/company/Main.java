@@ -45,6 +45,7 @@ public class Main extends Base{
         clearScreen();
         switch (submenuopt){
             case 1:
+                authenticate("candidates");
                 System.out.println("Please enter the candidate name: ");
                 userIn.nextLine();
                 String name = userIn.nextLine();
@@ -57,6 +58,7 @@ public class Main extends Base{
                 Candidate:addCandidate(name,idcardno,candno,box);
                 break;
             case 2:
+                authenticate("candidates");
                 Candidate.viewCandiatesList(0);
                 System.out.println("Enter the box number you want to make changes");
                 selectedbox = userIn.nextInt();
@@ -88,6 +90,7 @@ public class Main extends Base{
                 waitUser();
                 break;
             case 3:
+                authenticate("candidates");
                 Candidate.viewCandiatesList(0);
                 System.out.println("Enter the box number you want to make changes");
                 selectedbox = userIn.nextInt();
@@ -125,6 +128,7 @@ public class Main extends Base{
         clearScreen();
         switch (submenuopt) {
             case 1:
+                authenticate("voters");
                 System.out.println("Please enter the voter name: ");
                 userIn.nextLine();
                 String name = userIn.nextLine();
@@ -135,6 +139,7 @@ public class Main extends Base{
                 Voter.addVoter(name,idcardno,box);
                 break;
             case 2:
+                authenticate("voters");
                 int selectedrecord;
                 Voter.viewVotersList();
 
@@ -162,6 +167,7 @@ public class Main extends Base{
                 waitUser();
                 break;
             case 3:
+                authenticate("voters");
                 Voter.viewVotersList();
 
                 System.out.println("Please select the record id you want to delete");
@@ -191,6 +197,7 @@ public class Main extends Base{
     public static void voting(String box) throws FileNotFoundException {
         clearScreen();
         if(box.equals("")){
+            authenticate("main");
             System.out.println("Please enter the box number to open for voting");
             box = userIn.next();
             Voting.openVoting(box);

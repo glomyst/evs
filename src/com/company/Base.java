@@ -139,24 +139,50 @@ public class Base {
     }
 
     public static void authenticate(String func) throws FileNotFoundException {
-        getFileContents("database/auth/password.txt");
-        switch (func){
-            case "candidates":
-                Main.manageCandidates();
-                break;
-            case "voters":
-                Main.manageVoters();
-                break;
-            case "voting":
-                Main.voting("");
-                break;
-            case "results":
-                Candidate.showResults();
-                break;
-            case "stats":
-                Main.viewstats();
-                break;
+        getFileContents("auth/password.txt");
+        System.out.println("Please enter admin password: ");
+        String password = Main.userIn.next();
+
+        if(!(fileContent[0][0].equals(encrypt(password)))){
+            System.out.println("Access Deined!");
+            waitUser();
+            switch (func){
+                case "main":
+                    Main.mainMenu();
+                    break;
+                case "candidates":
+                    Main.manageCandidates();
+                    break;
+                case "voters":
+                    Main.manageVoters();
+                    break;
+                case "voting":
+                    Main.voting("");
+                    break;
+                case "results":
+                    Candidate.showResults();
+                    break;
+                case "stats":
+                    Main.viewstats();
+                    break;
+            }
         }
+        //System.out.println(encrypt("verystrongpass"));
+    }
+
+    public static String encrypt(String plain) {
+        String b64encoded = Base64.getEncoder().encodeToString(plain.getBytes());
+
+        // Reverse the string
+        String reverse = new StringBuffer(b64encoded).reverse().toString();
+
+        StringBuilder tmp = new StringBuilder();
+        final int OFFSET = 4;
+        for (int i = 0; i < reverse.length(); i++) {
+            tmp.append((char)(reverse.charAt(i) + OFFSET));
+        }
+        return tmp.toString();
     }
 }
+
 
