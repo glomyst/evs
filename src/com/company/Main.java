@@ -6,14 +6,14 @@ import java.util.Scanner;
 import static com.company.Candidate.addCandidate;
 
 public class Main extends Base{
-    public static Scanner userIn = new Scanner(System.in);
-    public static int userMenuchoise;
+    static Scanner userIn = new Scanner(System.in);
+    private static int userMenuchoise;
 
     public static void main(String[] args) throws FileNotFoundException {
         mainMenu();
     }
 
-    public static void mainMenu() throws FileNotFoundException {
+    static void mainMenu() throws FileNotFoundException {
         showMenu("main");
         System.out.println("Please select an option from above menu");
         userMenuchoise = userIn.nextInt();
@@ -31,10 +31,13 @@ public class Main extends Base{
             case 4:
                 Candidate.showResults();
                 break;
+            case 5:
+                viewstats();
+                break;
         }
     }
 
-    public static void manageCandidates() throws FileNotFoundException {
+    static void manageCandidates() throws FileNotFoundException {
         int selectedbox, selectedrecord;
         showMenu("manage_candidates");
         System.out.println("Please select an option from above");
@@ -115,7 +118,7 @@ public class Main extends Base{
         manageCandidates();
     }
 
-    public static void manageVoters() throws FileNotFoundException {
+    static void manageVoters() throws FileNotFoundException {
         showMenu("manage_voters");
         System.out.println("Please select an option from above");
         int submenuopt = userIn.nextInt();
@@ -194,7 +197,11 @@ public class Main extends Base{
         }
         clearScreen();
 
+        System.out.println("===========================================================");
+        System.out.println("             ELIGIBLE VOTERS LIST FOR BOX "+box+"                 ");
+        System.out.println("===========================================================");
         Voting.getVotersList(box);
+        showList(eligible_voters, "VOTERS");
         System.out.println("Please select a voter");
         System.out.println("(Type 'back' to go back to Main menu)");
         System.out.println("(Input 'close' to close voting)");
@@ -218,5 +225,62 @@ public class Main extends Base{
         Voting.addvote(voter, votingcand, box);
 
         voting(box);
+    }
+
+    public static void viewstats() throws FileNotFoundException {
+        clearScreen();
+        Statistics stats = new Statistics();
+        String line = "-------------------------------------------------";
+
+        int[][] data = new int[3][4];
+        data[0][0] = stats.numberofCandBoxOne;
+        data[0][1] = stats.numberofAllVotersBoxOne;
+        data[0][2] = stats.numberofVotedBoxOne;
+        data[0][3] = stats.numberofUnVotedBoxOne;
+
+        data[1][0] = stats.numberofCandBoxTwo;
+        data[1][1] = stats.numberofAllVotersBoxTwo;
+        data[1][2] = stats.numberofVotedBoxTwo;
+        data[1][3] = stats.numberofUnVotedBoxTwo;
+
+        data[2][0] = stats.numberofCandBoxThree;
+        data[2][1] = stats.numberofAllVotersBoxThree;
+        data[2][2] = stats.numberofVotedBoxThree;
+        data[2][3] = stats.numberofUnVotedBoxThree;
+
+        int count = 0;
+
+        System.out.println("================================================");
+        System.out.println("=                 EVS STATISTICS               =");
+        System.out.println("================================================");
+        while(count < 3){
+            if(count != 0){
+                System.out.println();
+            }
+            System.out.println("Box # "+(count+1));
+
+            System.out.format("| %-40s| %-3s|", "--- Number of candidates: ", data[count][0]);
+            System.out.println();
+            System.out.format("| %-40s| %-3s|", "--- Eligible voters: ", data[count][1]);
+            System.out.println();
+            System.out.format("| %-40s| %-3s|", "--- People who voted:  ", data[count][2]);
+            System.out.println();
+            System.out.format("| %-40s| %-3s|", "--- People who didnt vote: ", data[count][3]);
+            count++;
+        }
+
+        //System.out.format("| %-40s| %-3s|", "--- People who didnt vote: ", data[count][3]);
+        System.out.println();
+        System.out.println("Total: ");
+        System.out.format("| %-40s| %-3s|", "--- Number of eligible voters: ", stats.allvoters);
+        System.out.println();
+        System.out.format("| %-40s| %-3s|", "--- Number of candidates: ", stats.totalcandidates);
+        System.out.println();
+        System.out.format("| %-40s| %-3s|", "--- Number of people who voted: ", stats.votedvoters);
+        System.out.println();
+        System.out.format("| %-40s| %-3s|", "--- Number of people who didnt vote: ", stats.unvotedvoters);
+        System.out.println("\n \n");
+        waitUser();
+        mainMenu();
     }
 }

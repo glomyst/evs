@@ -21,11 +21,8 @@ public class Voting extends Base{
         }
 
         eligible_voters = new String[voterscount][voterscount*4];
-        System.out.println(voterscount);
 
-        System.out.println("===========================================================");
-        System.out.println("             ELIGIBLE VOTERS LIST FOR BOX "+box+"                 ");
-        System.out.println("===========================================================");
+
 
         int indexcount = 0;
         for(int i = 0; i <= fileContent.length-1; i++){
@@ -38,7 +35,6 @@ public class Voting extends Base{
             }
         }
 
-        showList(eligible_voters, "VOTERS");
     }
 
     public static void openVoting(String box) throws FileNotFoundException {

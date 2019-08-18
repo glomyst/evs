@@ -1,11 +1,12 @@
 Abdulla ahmed,323232,3,no
 Yameen,A4545,1,no
-ibbu,3232232,2,no
+ibbu,3232232,2,yes
 luiz,2323232,1,yes
 ibilees,423232,3,no
 alex,232323,3,no
 ahmed ali,2323444,3,no
-peter,A45554354,1,no
-thoyyib,32326646,2,no
+peter,A45554354,1,yes
+thoyyib,32326646,2,yes
 neyma,2324545,1,no
 afsah,2327777,3,no
+Ali ali,S34343,2,no
