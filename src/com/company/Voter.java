@@ -3,10 +3,8 @@ package com.company;
 import java.io.FileNotFoundException;
 
 public class Voter extends Base{
-    public void candidate(){
 
-    }
-
+    //adds a new voter
     public static void addVoter(String name, String idcardno, String box){
         String path = "voters/voters.txt";
         String content = name+","+idcardno+","+box+",no";
@@ -15,6 +13,7 @@ public class Voter extends Base{
         System.out.println("New voter Added!");
     }
 
+    //view all voters list
     public static void viewVotersList() throws FileNotFoundException {
 
             System.out.println("===========================================================");

@@ -1,0 +1,23 @@
+================================================
+=                 EVS STATISTICS               =
+================================================
+Box # 1
+| --- Number of candidates:               | 2  |
+| --- Eligible voters:                    | 6  |
+| --- People who voted:                   | 4  |
+| --- People who didnt vote:              | 2  |
+Box # 2
+| --- Number of candidates:               | 2  |
+| --- Eligible voters:                    | 2  |
+| --- People who voted:                   | 1  |
+| --- People who didnt vote:              | 1  |
+Box # 3
+| --- Number of candidates:               | 3  |
+| --- Eligible voters:                    | 4  |
+| --- People who voted:                   | 2  |
+| --- People who didnt vote:              | 2  |
+Total: 
+| --- Number of eligible voters:          | 12 |
+| --- Number of candidates:               | 7  |
+| --- Number of people who voted:         | 7  |
+| --- Number of people who didnt vote:    | 5  |

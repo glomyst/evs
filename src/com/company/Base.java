@@ -3,10 +3,16 @@ package com.company;
 import java.io.*;
 import java.util.*;
 public class Base {
+    //array to store contents received from file
     static String[][] fileContent;
+    // store result of array
     private static int recordCount = 0;
+    //store eligible voters for a box in this array
     static String[][] eligible_voters;
+
+    //show menu function
     static void showMenu(String menu) throws FileNotFoundException {
+        //depending on the argument received choose which menu file to read
         clearScreen();
         String curFile = "";
         switch (menu){
@@ -20,15 +26,19 @@ public class Base {
                 curFile = "database/menu/voter/managevoters.txt";
                 break;
         }
+        //read the file required
         File file = new File(curFile);
         Scanner scanFile = new Scanner(file);
 
+        //output all the contents of the menu file
         while(scanFile.hasNext()){
             System.out.println(scanFile.nextLine());
         }
     }
 
+    //file writer function
     static void fileWriter(String filetowrite, String content){
+        //get file name and content to write to that file. than open the file and append the content to it
         try (FileWriter writer = new FileWriter("database/"+filetowrite,true);
              BufferedWriter bw = new BufferedWriter(writer)) {
             bw.append(content).append("\n");
@@ -37,14 +47,18 @@ public class Base {
         }
     }
 
+    //get file contents function
     static void getFileContents(String readfile) throws FileNotFoundException {
+        //get file name and read all the content in it
         recordCount = 0;
         File file = new File("database/"+readfile);
         Scanner scanfile = new Scanner(file);
 
+        //crate and array to put the content in
         countRecords(readfile);
         fileContent = new String[recordCount][recordCount*4];
 
+        //put all the content in the array fileContent
         int count = 0;
         while(scanfile.hasNextLine()){
             String[] fileStuff = scanfile.nextLine().split(",");
@@ -63,7 +77,9 @@ public class Base {
 
     }
 
+    //show lists function
     static void showList(String[][] fileContent, String type){
+        //get a fileContent array and output all the data depending on the type provided
         switch (type){
             case "CANDIDATES":
                 for(int i = 0; i <= fileContent.length-1; i++){
@@ -90,7 +106,9 @@ public class Base {
         }
     }
 
+    //count records function
     private static void countRecords(String readfile) throws FileNotFoundException {
+        //counts the number of records in a file
         File file = new File("database/"+readfile);
         Scanner scanfile = new Scanner(file);
 
@@ -100,7 +118,9 @@ public class Base {
         }
     }
 
+    //update contents function
     static void updateContent(String[][] fileContent, String selectedbox, String type) throws FileNotFoundException {
+        //get a fileContent array and replace the whole file with the new updated data
         String file="";
         switch (type){
             case "CANDIDATES":
@@ -114,7 +134,7 @@ public class Base {
                 break;
         }
 
-
+        // first clear existing file and feed the content to file writer to write to it
         clearFileContent(file);
         for(int i = 0; i <= fileContent.length-1; i++){
             if(!fileContent[i][0].equals("") && !fileContent[i][1].equals("")){
@@ -123,21 +143,26 @@ public class Base {
         }
     }
 
+    //add new line to the console to replicate clearing the screen
     static void clearScreen() {
         for (int i = 0; i < 50; ++i) System.out.println();
     }
 
+    //clear all the contents in a file
     private static void  clearFileContent(String file) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter("database/"+file);
         writer.print("");
         writer.close();
     }
 
+    //waits the user until an input is given. used to show messages.
     static void waitUser(){
         System.out.println("Input any value and press enter to continue");
         Main.userIn.next();
     }
 
+    //gets the password from a file and compare it with the entered password.
+    //depending on the call pack function user it taken back to the menu if password is wrong
     public static void authenticate(String func) throws FileNotFoundException {
         getFileContents("auth/password.txt");
         System.out.println("Please enter admin password: ");
@@ -170,6 +195,7 @@ public class Base {
         //System.out.println(encrypt("verystrongpass"));
     }
 
+    //encrypts the password to base 64
     public static String encrypt(String plain) {
         String b64encoded = Base64.getEncoder().encodeToString(plain.getBytes());
 

@@ -1,2 +1,2 @@
-Ali ahmed,A4544545,2,8
-Afsah,132323232,4,2
+Ali ahemd,A132455,2,1
+Afsah Nasir,A285155,4,2

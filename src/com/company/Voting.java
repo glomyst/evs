@@ -5,11 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Voting extends Base{
-
-    public static void voting(){
-
-    }
-
+    //gets the eligible voters for the provided box
     public static void getVotersList(String box) throws FileNotFoundException {
         getFileContents("voters/voters.txt");
         int voterscount = 0;
@@ -37,6 +33,7 @@ public class Voting extends Base{
 
     }
 
+    //opens box for voting
     public static void openVoting(String box) throws FileNotFoundException {
         getFileContents("voting/box"+box+".txt");
 
@@ -59,6 +56,7 @@ public class Voting extends Base{
 
     }
 
+    //closes a box from voting
     public static void closeVoting(String box) throws FileNotFoundException {
         getFileContents("voting/box"+box+".txt");
 
@@ -74,6 +72,7 @@ public class Voting extends Base{
         Main.mainMenu();
     }
 
+    //updates all required files when a vote is added
     public static void addvote(String voter, String candidate, String box) throws FileNotFoundException {
         getFileContents("voters/voters.txt");
 

@@ -3,6 +3,7 @@ package com.company;
 import java.io.FileNotFoundException;
 
 public class Statistics extends Base{
+    //all the stats variables
     static int allvoters;
     static int totalcandidates = 0;
     static int votedvoters;
@@ -20,6 +21,7 @@ public class Statistics extends Base{
     static int numberofAllVotersBoxTwo;
     static int numberofAllVotersBoxThree;
 
+    //constructor call all the functions to satisfy the stats variables
     Statistics() throws FileNotFoundException {
         countVoters();
         countCandidates(0);
@@ -28,10 +30,7 @@ public class Statistics extends Base{
         unvotedvoters = numberofUnVotedBoxOne + numberofUnVotedBoxTwo + numberofUnVotedBoxThree;
     }
 
-    Statistics(String type){
-
-    }
-
+    //counts voters for stats
     private static void countVoters() throws FileNotFoundException {
         getFileContents("voters/voters.txt");
         allvoters = fileContent.length;
@@ -60,6 +59,7 @@ public class Statistics extends Base{
         }
     }
 
+    //counts candidates for stats
     private static void countCandidates(int box) throws FileNotFoundException {
         int cnt = (box >= 1 && box <= 3) ? box : 1;
 
@@ -87,6 +87,7 @@ public class Statistics extends Base{
 
     }
 
+    //count all voters of each boc
     private static void countBoxVoter(int box) throws FileNotFoundException {
         getFileContents("voters/voters.txt");
         int voterscount = 0;

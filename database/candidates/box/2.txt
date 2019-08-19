@@ -1,6 +1,2 @@
-Mohamed Ali,A343343,1,1
-Ali Ibrahim,A23233232,1,3
-Ibrahuim solih,A34343,0,2
-
-Please enter the box number of candidate
-2
+Mohamed Ahmed,A288414,2,4
+Ali Ibrahim,A233233,1,3

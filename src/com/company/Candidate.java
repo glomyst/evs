@@ -3,10 +3,8 @@ package com.company;
 import java.io.FileNotFoundException;
 
 public class Candidate extends Base {
-    public void candidate(){
 
-    }
-
+    //add candidate function. adds a new candidates
     public static void addCandidate(String name, String idcardno, String candno,String box){
         String path = "candidates/box/"+box+".txt";
         String content = name+","+idcardno+",0,"+candno;
@@ -15,6 +13,7 @@ public class Candidate extends Base {
         System.out.println("New candidate Added!");
     }
 
+    //shows the whole candidates list
     public static void viewCandiatesList(int boxid) throws FileNotFoundException {
         int boxcnt;
         if(boxid >= 1 && boxid <= 3){
@@ -41,6 +40,7 @@ public class Candidate extends Base {
         }
     }
 
+    //shows the results of each of the candidates
     public static void showResults() throws FileNotFoundException {
         clearScreen();
         System.out.println("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#");
